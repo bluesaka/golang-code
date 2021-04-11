@@ -1,0 +1,7 @@
+package mycontext
+
+
+
+func shrinkDeadline() {
+
+}
