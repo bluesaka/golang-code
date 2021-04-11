@@ -66,7 +66,7 @@ func ParseJwt(token string) (User, error) {
 	return c.User, nil
 }
 
-// CreateJwt create jwt token with Map
+// CreateJwt2 CreateJwt create jwt token with Map
 func CreateJwt2(u User) {
 	t := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
 		"exp":     time.Now().Unix() + 30,
@@ -83,7 +83,7 @@ func CreateJwt2(u User) {
 	log.Println(token)
 }
 
-// ParseJwt parse jwt token
+// ParseJwt2 ParseJwt parse jwt token
 func ParseJwt2(token string) {
 	var m jwt.MapClaims
 	_, err := jwt.ParseWithClaims(token, &m, func(token *jwt.Token) (interface{}, error) {

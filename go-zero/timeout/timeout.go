@@ -45,7 +45,7 @@ func RequestWork2(ctx context.Context, job interface{}) error {
 	/**
 	 * 如果不设置缓冲大小，当2s超时后函数退出，done <- hardWork4(ctx, job)会一直卡这些不进去，
 	 * 导致每个RequestWork2请求都会一直占用一个goroutine
-	 * 设置缓存大小后，不论是否超时，done <- hardWork4(ctx, job)都能写入而不卡主goroutine
+	 * 设置缓冲大小后，不论是否超时，done <- hardWork4(ctx, job)都能写入而不卡住goroutine
 	 * 向一个没goroutine接受的channel写数据，是可以的
 	 */
 	done := make(chan error, 1)
