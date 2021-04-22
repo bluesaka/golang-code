@@ -1,26 +1,118 @@
+/**
+atomic
+原子操作，减少data race数据竞争
+CAS (Compare And Swap)
+
+data race
+数据竞争
+go run -race main.go
+ */
+
 package main
 
-import "fmt"
-
-type AAA int
-const (
-	A1 AAA = iota
-	A2
+import (
+	"log"
+	"sync"
+	"sync/atomic"
 )
 
 func main() {
-	a := uint(1)
-	b := uint(2)
-	fmt.Println(a-b) // 18446744073709551615
+	//atomic1()
+	//dataRace)
+	//dataRaceWithLock()
+	//dataRaceWithLock()
+}
 
-	a1 := uint32(1)
-	b1 := uint32(2)
-	fmt.Println(a1-b1) // 4294967295
+func atomic1() {
+	var wg sync.WaitGroup
+	var count, count2 int64
 
-	a2 := uint64(1)
-	b2 := uint64(2)
-	fmt.Println(a2-b2) // 18446744073709551615
+	for i := 0; i < 1000; i++ {
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			count++
+			atomic.AddInt64(&count2, 1)
+		}()
+	}
+	wg.Wait()
+	log.Println("count:", count)
+	log.Println("count2:", count2)
+}
 
-	fmt.Println(A1)
-	fmt.Println(A2)
+type data struct {
+	a []int
+}
+
+func dataRace() {
+	var s []int
+	go func() {
+		i := 0
+		for {
+			i++
+			s = []int{i, i + 1, i + 2, i + 3, i + 4}
+		}
+	}()
+
+	var wg sync.WaitGroup
+	for i := 0; i < 4; i++ {
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			log.Println(s)
+		}()
+	}
+	wg.Wait()
+}
+
+func dataRaceWithLock() {
+	var s []int
+	var mu sync.RWMutex
+
+	go func() {
+		i := 0
+		for {
+			i++
+			mu.Lock()
+			s = []int{i, i + 1, i + 2, i + 3, i + 4}
+			mu.Unlock()
+		}
+	}()
+
+	var wg sync.WaitGroup
+	for i := 0; i < 4; i++ {
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			mu.RLock()
+			log.Println(s)
+			mu.RUnlock()
+		}()
+	}
+	wg.Wait()
+}
+
+func dataRaceWithAtomic() {
+	var s []int
+	var v atomic.Value
+
+	go func() {
+		i := 0
+		for {
+			i++
+			s = []int{i, i + 1, i + 2, i + 3, i + 4}
+			v.Store(s)
+		}
+	}()
+
+	var wg sync.WaitGroup
+	for i := 0; i < 4; i++ {
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			val := v.Load()
+			log.Println(val)
+		}()
+	}
+	wg.Wait()
 }

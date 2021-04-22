@@ -109,6 +109,6 @@ func middleware2(ctx *gin.Context) {
 }
 
 func middleware3(ctx *gin.Context) {
-	log.Println("middleware 2")
+	log.Println("middleware 3")
 	ctx.Next()
 }

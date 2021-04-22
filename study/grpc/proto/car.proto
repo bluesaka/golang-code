@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package proto;
+
+message CarReq {
+  string name = 1;
+}
+
+message CarResp {
+  string name = 1;
+  uint64 price = 2;
+}
+
+message CarListResp {
+  repeated CarResp list = 1;
+}
+
+service CarService {
+  rpc List(CarReq) returns (CarListResp);
+  rpc Query(CarReq) returns (CarResp);
+  rpc Update(CarReq) returns (CarResp);
+}

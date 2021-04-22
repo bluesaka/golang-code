@@ -14,6 +14,7 @@ go get -u github.com/golang/protobuf/protoc-gen-go@v1.3.2
 
 生成 pb.go 文件
 protoc --go_out=. helloworld.proto
+protoc --go_out=plugins=grpc:. helloworld.proto  //使用该命令，会生成grpc代码
 
 很多坑都来自于protoc和protoc-gen-go的版本问题
 如protoc-gen-go v1.26.0版本执行上面的命令，会报以下错误：

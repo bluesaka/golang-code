@@ -34,6 +34,9 @@ CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o outputname x.go
 CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -o outputname x.go
 CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o outputname x.go
 
+// 编译的时候加上-ldflags "-s -w"参数去掉符号表和调试信息，一般能减小20%的大小。
+CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags "-s -w" -o ./bin/main
+
 go install命令与go build类似，go install知识将编译的中间文件放在 $GOPATH 的 pkg 目录下，并将编译结果放在 $GOPATH 的 bin 目录下
  */
 

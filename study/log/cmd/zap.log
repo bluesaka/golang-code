@@ -1,0 +1,3 @@
+{"level":"info","ts":1618994562.520478,"caller":"log/zap.go:86","msg":"go.uber.org/zap info: hello zap"}
+{"level":"info","ts":1618994562.520521,"caller":"log/zap.go:87","msg":"go.uber.org/zap info:","msg":"hello zap"}
+{"level":"info","ts":1618994562.5205288,"caller":"log/zap.go:88","msg":"go.uber.org/zap sugar info: hello zap sugar"}

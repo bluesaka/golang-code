@@ -1,0 +1,1 @@
+{"level":"info","ts":1618994517.719233,"caller":"log/zap.go:96","msg":"go.uber.org/zap lumber sugar info: hello zap sugar"}
