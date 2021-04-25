@@ -111,6 +111,12 @@ func Query() {
 		log.Println(err)
 	}
 	log.Printf("%+v\n", user)
+
+	var sum = 0
+	if err := db.Table("user").Select("sum(age) as sum").Row().Scan(&sum); err != nil {
+		log.Println(err)
+	}
+	log.Printf("sum is %v\n", sum)
 }
 
 func Update() {
