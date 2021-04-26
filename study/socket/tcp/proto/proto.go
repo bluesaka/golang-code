@@ -1,7 +1,7 @@
 /**
 定义一个协议，比如数据包的前4个字节为包头，里面存储的是发送的数据的长度。
 解决TCP粘包问题
- */
+*/
 
 package proto
 
@@ -18,12 +18,12 @@ func Encode(message string) ([]byte, error) {
 	buf := new(bytes.Buffer)
 	// 写入消息头
 	if err := binary.Write(buf, binary.LittleEndian, length); err != nil {
-		return nil ,err
+		return nil, err
 	}
 
 	// 写入消息实体
 	if err := binary.Write(buf, binary.LittleEndian, []byte(message)); err != nil {
-		return nil ,err
+		return nil, err
 	}
 
 	return buf.Bytes(), nil

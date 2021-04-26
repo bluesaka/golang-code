@@ -12,7 +12,7 @@ type Cache interface {
 
 type RedisCache struct {
 	data map[string]interface{}
-	mux sync.Mutex
+	mux  sync.Mutex
 }
 
 func (r *RedisCache) Get(key string) (interface{}, error) {
@@ -33,7 +33,7 @@ func (r *RedisCache) Set(key string, value interface{}) bool {
 
 type Memcache struct {
 	data map[string]interface{}
-	mux sync.Mutex
+	mux  sync.Mutex
 }
 
 func (r *Memcache) Get(key string) (interface{}, error) {
@@ -59,7 +59,7 @@ const (
 	memcache
 )
 
-type CacheFactory struct {}
+type CacheFactory struct{}
 
 func (c *CacheFactory) Create(cacheType CacheType) (Cache, error) {
 	switch cacheType {
@@ -70,4 +70,3 @@ func (c *CacheFactory) Create(cacheType CacheType) (Cache, error) {
 	}
 	return nil, errors.New("not support cache type")
 }
-

@@ -13,6 +13,6 @@ func main() {
 	err := leak.GoroutineLeakTimeout(context.Background())
 	log.Println(err)
 	log.Println("goroutine num:", runtime.NumGoroutine())
-	time.Sleep(time.Second*3)
+	time.Sleep(time.Second * 3)
 	log.Println("goroutine num:", runtime.NumGoroutine())
 }

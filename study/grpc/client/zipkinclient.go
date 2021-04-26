@@ -26,7 +26,7 @@ func main() {
 		panic(err)
 	}
 
-	_= zipkinot.Wrap(nativeTracer)
+	_ = zipkinot.Wrap(nativeTracer)
 	//opentracing.SetGlobalTracer(tracer)
 
 	opts := []grpc.DialOption{

@@ -7,7 +7,7 @@ goroutine终止的场景:
 - 当一个goroutine完成它的工作
 - 由于发生了没有处理的错误
 - 有其他的协程告诉它终止
- */
+*/
 
 package leak
 
@@ -34,7 +34,7 @@ func GoroutineLeakTimeout(ctx context.Context) error {
 	select {
 	case <-ctx.Done():
 		return fmt.Errorf("timeout")
-	case <- done:
+	case <-done:
 		return nil
 	}
 }

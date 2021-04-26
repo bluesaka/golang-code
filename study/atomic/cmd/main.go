@@ -6,7 +6,7 @@ CAS (Compare And Swap)
 data race
 数据竞争
 go run -race main.go
- */
+*/
 
 package main
 

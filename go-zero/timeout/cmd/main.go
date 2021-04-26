@@ -8,10 +8,10 @@ package main
 import (
 	"context"
 	"fmt"
+	"go-code/go-zero/timeout"
 	"log"
 	"runtime"
 	"sync"
-	"go-code/go-zero/timeout"
 	"time"
 )
 
@@ -96,6 +96,6 @@ func test3() {
 	}
 	wg.Wait()
 	fmt.Println("elapsed:", time.Since(now))
-	time.Sleep(time.Second*20)
+	time.Sleep(time.Second * 20)
 	fmt.Println("goroutine num:", runtime.NumGoroutine())
 }

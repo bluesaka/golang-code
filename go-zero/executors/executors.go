@@ -36,7 +36,7 @@ func (dt DailyTask) insertNewData(ch chan interface{}) {
 	//		continue
 	//	}
 	//}
-	_  = dt.insertExecutor.Add([]interface{}{})
+	_ = dt.insertExecutor.Add([]interface{}{})
 	dt.insertExecutor.Flush()
 	dt.insertExecutor.Wait()
 

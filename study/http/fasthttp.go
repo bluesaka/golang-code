@@ -13,7 +13,7 @@ var (
 )
 
 func MyFastHttpGet() string {
-	status, body, err := fasthttp.Get(nil , GetUrl)
+	status, body, err := fasthttp.Get(nil, GetUrl)
 	if err != nil {
 		log.Println("fasthttp Get error:", err)
 		return ""
@@ -33,7 +33,7 @@ func MyFastHttpPost(u string, params map[string]interface{}) string {
 	for k, v := range params {
 		args.Add(k, cast.ToString(v))
 	}
-	status, body, err := fasthttp.Post(nil , PostUrl, args)
+	status, body, err := fasthttp.Post(nil, PostUrl, args)
 	if err != nil {
 		log.Println("fasthttp Post error:", err)
 		return ""

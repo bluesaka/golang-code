@@ -8,7 +8,7 @@ import (
 	"reflect"
 )
 
-func main()  {
+func main() {
 	redis := zredis.NewRedis("127.0.0.1:6379", zredis.NodeType, "")
 	//get(redis)
 	//Hget(redis)

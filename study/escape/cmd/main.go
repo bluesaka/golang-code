@@ -12,7 +12,7 @@ $ go build -gcflags -m main.go
 ./main.go:12:6: can inline main
 ./main.go:13:6: inlining call to test
 ./main.go:17:2: moved to heap: i
- */
+*/
 package main
 
 import "fmt"

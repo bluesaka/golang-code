@@ -5,6 +5,6 @@ OpenTracing是开放式分布式追踪规范，为分布式追踪创建更标准
 相关名词：
 Trace Span Tags logs SpanContext
 
- */
+*/
 
 package grpc

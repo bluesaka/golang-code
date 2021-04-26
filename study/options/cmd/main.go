@@ -1,11 +1,11 @@
 package main
 
 import (
-	"log"
 	"go-code/study/options"
+	"log"
 )
 
-func main()  {
+func main() {
 	s := options.NewStuffClientWithOptions(options.Connection{})
 	log.Printf("%+v\n\n", s)
 

@@ -26,7 +26,7 @@ func chanRange2() {
 - 发送者数据发送完毕后，关闭channel
 - 接受者数据接受完毕后，终止程序
 - 去除main函数time.Sleep
- */
+*/
 func chanRange1() {
 	ch := make(chan string)
 	go makeCake1(ch)

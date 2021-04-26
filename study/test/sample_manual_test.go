@@ -4,7 +4,7 @@ assert断言
 
 go test -v sample.go sample_manual_test.go
 go test -v -run Test_echo_manual sample.go sample_manual_test.go
- */
+*/
 package test
 
 import (

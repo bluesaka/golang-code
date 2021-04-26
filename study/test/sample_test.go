@@ -179,7 +179,7 @@ BenchmarkEcho
 BenchmarkEcho-8         1000000000               0.272 ns/op           0 B/op          0 allocs/op
 PASS
 ok      go-code/study/test      3.276s
- */
+*/
 func BenchmarkEcho(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		echo(i)
@@ -195,7 +195,7 @@ BenchmarkSay
 BenchmarkSay-8             16072            126426 ns/op           71267 B/op      15972 allocs/op
 PASS
 ok      go-code/study/test      3.100s
- */
+*/
 func BenchmarkSay(b *testing.B) {
 	b.RunParallel(func(pb *testing.PB) {
 		for pb.Next() {

@@ -32,8 +32,8 @@ import (
 	"time"
 )
 
-var CPUPprofSwitch = flag.Bool("cpu", false,"cpu pprof switch")
-var MemPprofSwitch = flag.Bool("mem", false,"mem pprof switch")
+var CPUPprofSwitch = flag.Bool("cpu", false, "cpu pprof switch")
+var MemPprofSwitch = flag.Bool("mem", false, "mem pprof switch")
 
 func Pprof1() {
 	flag.Parse()

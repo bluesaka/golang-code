@@ -86,7 +86,7 @@ Lock()加写锁、Unlock()释放写锁
 
 RLock()加读锁、RUnlock()释放读锁
 如果存在写锁，则无法加读锁；当只有读锁或没有锁时，可以加读锁，读锁可以加多个
- */
+*/
 func mutex4() {
 	var m sync.RWMutex
 	for i := 1; i <= 3; i++ {
@@ -95,7 +95,7 @@ func mutex4() {
 	for i := 1; i <= 3; i++ {
 		go write2(&m, i)
 	}
-	time.Sleep(time.Second*10)
+	time.Sleep(time.Second * 10)
 	log.Println("final count:", m4count)
 }
 

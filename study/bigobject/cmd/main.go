@@ -14,7 +14,7 @@ mallocgc在分配内存的时候，会按照对象的大小分为3档来进行�
 - 大对象: > 32K；
 	- 通过largeAlloc来分配一个mspan，直接向mheap申请，当大对象需要分配的页数小于16页时，会直接从pageCache中分配，否则才会从堆页中获取。
 
- */
+*/
 package main
 
 import "fmt"
@@ -65,4 +65,4 @@ TEXT main.main(SB) /Users/felix/gosrc/go-code/study/bigobject/cmd/main.go
   main.go:23		0x10a6f0e		c3			RET
   main.go:22		0x10a6f0f		e86c9ffbff		CALL runtime.morestack_noctxt(SB)
   main.go:22		0x10a6f14		e967ffffff		JMP main.main(SB)
- */
+*/

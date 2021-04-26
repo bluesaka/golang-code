@@ -19,4 +19,6 @@ service CarService {
   rpc List(CarReq) returns (CarListResp);
   rpc Query(CarReq) returns (CarResp);
   rpc Update(CarReq) returns (CarResp);
+
+  // todo stream rpc
 }

@@ -2,7 +2,7 @@
 断言assert
 
 类型转换推荐使用cast库  `github.com/spf13/cast`
- */
+*/
 package main
 
 import "fmt"

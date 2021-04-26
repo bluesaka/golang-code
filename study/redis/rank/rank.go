@@ -70,7 +70,7 @@ func getBucketSelfRank(redisClient *redis.Client, member string) {
 	var frontRank int64 = 0
 
 	// 判断在那个桶，排名就是在该桶的排名+在这之前的桶的个数
-	// 888在第八个桶，前面有一个桶
+	// 801在第八个桶，前面有一个桶
 	for i := range frontNumSlice {
 		fr, err := redisClient.ZCard(context.Background(), bucketSortKey+cast.ToString(i)).Result()
 		if err != nil {

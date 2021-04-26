@@ -33,7 +33,7 @@ Warning: debugging optimized function
 (dlv) print typ
 *runtime._type {size: 16, ptrdata: 8, hash: 875453117, tflag: tflagUncommon|tflagExtraStar|tflagNamed (7), align: 8, fieldAlign: 8, kind: 25, equal: runtime.strequal, gcdata: *1, str: 4950, ptrToThis: 28384}
 可以看到这里打印的size是16bytes，因为A结构体里只有一个string类型的字段
- */
+*/
 package main
 
 import "fmt"

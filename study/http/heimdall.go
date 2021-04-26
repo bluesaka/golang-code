@@ -72,9 +72,9 @@ func MyHystrixGet() string {
 	}
 
 	client := hystrix.NewClient(
-		hystrix.WithHTTPTimeout(100 * time.Millisecond),
+		hystrix.WithHTTPTimeout(100*time.Millisecond),
 		hystrix.WithCommandName("my_hystrix_get"),
-		hystrix.WithHystrixTimeout(1000 * time.Millisecond),
+		hystrix.WithHystrixTimeout(1000*time.Millisecond),
 		hystrix.WithMaxConcurrentRequests(30),
 		hystrix.WithErrorPercentThreshold(20),
 		hystrix.WithStatsDCollector("localhost:8125", "myapp.hystrix"),

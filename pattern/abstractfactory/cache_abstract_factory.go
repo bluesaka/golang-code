@@ -12,7 +12,7 @@ type Cache2 interface {
 
 type RedisCache2 struct {
 	data map[string]interface{}
-	mux sync.Mutex
+	mux  sync.Mutex
 }
 
 func (r *RedisCache2) Get2(key string) (interface{}, error) {
@@ -33,7 +33,7 @@ func (r *RedisCache2) Set2(key string, value interface{}) bool {
 
 type Memcache2 struct {
 	data map[string]interface{}
-	mux sync.Mutex
+	mux  sync.Mutex
 }
 
 func (r *Memcache2) Get2(key string) (interface{}, error) {
@@ -58,7 +58,6 @@ type CacheAbstractFactory interface {
 }
 
 type RedisFactory struct {
-
 }
 
 func (r *RedisFactory) Create() Cache2 {
@@ -66,11 +65,8 @@ func (r *RedisFactory) Create() Cache2 {
 }
 
 type MemcacheFactory struct {
-
 }
 
 func (r *MemcacheFactory) Create() Cache2 {
 	return &Memcache2{data: map[string]interface{}{}}
 }
-
-

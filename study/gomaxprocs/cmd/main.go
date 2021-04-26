@@ -5,7 +5,7 @@ M是操作系统线程，在绝大多数情况下，P和M的数量相等，每�
 runtime.GOMAXPROCS(n int) 来设置P的值
 Go1.5开始，GOMAXPROCS默认值为CPU的核数
 但对于IO密集型的场景，把GOMAXPROCS的值适当调大，比如两倍的CPU核数，提高并发的运行性能
- */
+*/
 package main
 
 import (
