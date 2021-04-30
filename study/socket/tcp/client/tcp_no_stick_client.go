@@ -1,7 +1,7 @@
 package main
 
 import (
-	"go-code/study/socket/tcp/proto"
+	"go-code/study/socket/tcp/schema"
 	"log"
 	"net"
 )
@@ -16,7 +16,7 @@ func main() {
 	log.Println("client starting at 127.0.0.1:20000")
 
 	for i := 0; i < 20; i++ {
-		data, err := proto.Encode(`Hello there, how are you?`)
+		data, err := schema.Encode(`Hello there, how are you?`)
 		if err != nil {
 			log.Println("client encode msg failed, err", err)
 		}

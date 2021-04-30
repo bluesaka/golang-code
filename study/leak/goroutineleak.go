@@ -1,5 +1,5 @@
 /**
-产生goroutine leak（协程泄露）的原因可能有以下几种：
+产生goroutine leak（协程泄漏）的原因可能有以下几种：
 - goroutine由于channel的读/写端退出而一直阻塞，导致goroutine一直占用资源，而无法退出
 - goroutine进入死循环中，导致资源一直无法释放
 

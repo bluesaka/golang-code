@@ -2,7 +2,7 @@ package main
 
 import (
 	"bufio"
-	"go-code/study/socket/tcp/proto"
+	"go-code/study/socket/tcp/schema"
 	"io"
 	"log"
 	"net"
@@ -33,7 +33,7 @@ func process2(conn net.Conn) {
 	reader := bufio.NewReader(conn)
 
 	for {
-		msg, err := proto.Decode(reader)
+		msg, err := schema.Decode(reader)
 		if err == io.EOF {
 			break
 		}

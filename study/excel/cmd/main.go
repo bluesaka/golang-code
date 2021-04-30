@@ -6,6 +6,6 @@ func main() {
 	//myexcelize.WriteToExcel()
 	//myexcelize.ReadFromExcel()
 	//myexcelize.WriteChartToExcel()
-	myexcelize.WriteImageToExcel()
-	myexcelize.StreamWrite()
+	//myexcelize.WriteImageToExcel()
+	myexcelize.WriteExcelDataToDatabase()
 }
