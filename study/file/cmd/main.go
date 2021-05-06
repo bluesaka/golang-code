@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"go-code/study/file/tail"
 	"io"
 	"io/ioutil"
 	"os"
@@ -9,7 +10,7 @@ import (
 )
 
 func main() {
-	read1()
+	tail.TailWatcher()
 }
 
 /**
