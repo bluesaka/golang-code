@@ -116,7 +116,7 @@ func bulkInsert(qs []question) {
 
 	}
 
-	log.Println(buf.String())
+	//log.Println(buf.String())
 	if err := db.Exec(buf.String()).Error; err != nil {
 		log.Println("exec insert error:", err)
 	}
@@ -200,7 +200,12 @@ func wrapChoices(choices []choice) string {
 	for _, v := range choices {
 		m = append(m, v.Content)
 	}
+	// json.Marshal 默认 escapeHtml 为true, 会转义 <、>、&
+	// 这里简单的进行replace替换
 	json, _ := jsoniter.Marshal(m)
+	json = bytes.Replace(json, []byte("\\u0026"), []byte("&"), -1)
+	json = bytes.Replace(json, []byte("\\u003c"), []byte("<"), -1)
+	json = bytes.Replace(json, []byte("\\u003e"), []byte(">"), -1)
 	return string(json)
 }
 
