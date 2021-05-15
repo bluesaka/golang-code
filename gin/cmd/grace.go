@@ -32,6 +32,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
 	"io"
+	"my-gin/logutil"
 	"my-gin/routers"
 	"net/http"
 	"os"
@@ -58,6 +59,7 @@ func main() {
 	}
 
 	initLog()
+	logutil.InitZapLog()
 
 	if err := gracehttp.Serve(srv); err != nil {
 		panic(fmt.Sprintf("listen error: %s\n", err))
@@ -71,6 +73,7 @@ func initLog() {
 
 	//设置output,默认为stderr,可以为任何io.Writer，比如文件*os.File
 	file, err := os.OpenFile("gin_logrus.log", os.O_CREATE|os.O_RDWR|os.O_APPEND, os.ModePerm)
+	//file, err := os.OpenFile("/data/logs/gin_logrus.log", os.O_CREATE|os.O_RDWR|os.O_APPEND, os.ModePerm)
 	if err != nil {
 		panic(err)
 	}
