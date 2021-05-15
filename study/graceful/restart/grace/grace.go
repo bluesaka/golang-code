@@ -19,7 +19,7 @@ blah blah
 go build grace.go
 
 // 重启服务
-kill -USR2 `ps -ef | grep grace | grep -v grep | awk 'print {$2}'`
+kill -USR2 `ps -ef | grep grace | grep -v grep | awk '{print $2}'`
 
 可以发现，重启时未完成的请求会继续旧服务处理，新来的请求会使用新的服务，实现了平滑重启的功能
 

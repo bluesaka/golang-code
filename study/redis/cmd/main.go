@@ -4,8 +4,8 @@ import (
 	"context"
 	redis2 "github.com/go-redis/redis/v8"
 	"github.com/gomodule/redigo/redis"
+	jsoniter "github.com/json-iterator/go"
 	"go-code/study/redis/goredis"
-	"go-code/study/redis/rank"
 	"go-code/study/redis/redigo"
 	"log"
 	"reflect"
@@ -15,7 +15,48 @@ import (
 func main() {
 	//redigo1()
 	//go_redis1()
-	rank.SortBucket()
+	//rank.SortBucket()
+	redigo3()
+}
+
+type RR struct {
+	A string `json:"a"`
+	B string `json:"b"`
+	C string `json:"c"`
+}
+
+func redigo3() {
+	redisConn := redigo.GetRedis()
+	defer redigo.CloseRedis()
+
+	s := make(map[string]string, 2)
+	s["a"] = "a1"
+	s["b"] = "b1"
+
+	var r RR
+	str := `{"a":"a1", "b":"b1"}`
+	jsoniter.Unmarshal([]byte(str), &r)
+	log.Printf("%+v\n", r)
+
+	return
+
+	b, _ := jsoniter.Marshal(s)
+	_, err := redisConn.Do("SET", "test1", string(b), "EX", 600)
+	if err != nil {
+		log.Println("redis set error:", err)
+	}
+
+	b2, err := redis.Bytes(redisConn.Do("GET", "test1"))
+	if err != nil {
+		log.Println("redis get error:", err)
+	}
+
+	ss := make(map[string]string)
+	jsoniter.Unmarshal(b2, &ss)
+	log.Printf("%+v\n", ss)
+
+	log.Println(ss["c"])
+
 }
 
 func redigo1() {

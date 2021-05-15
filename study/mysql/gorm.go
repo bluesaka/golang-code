@@ -181,3 +181,46 @@ func Transaction2() {
 		log.Println(err)
 	}
 }
+
+func FindOrCreate() {
+	var user User
+	if err := db.Where("id = 2225").First(&user).Error; err != nil {
+		log.Println("find error:", err)
+	}
+	if user.ID == 0 {
+		user = User{
+			Name:     "name2225",
+			Age:      10,
+			Birthday: time.Now(),
+		}
+		saveUser(&user)
+	}
+	log.Printf("%+v\n", user)
+}
+
+func saveUser(user *User) {
+	if err := db.Create(&user).Error; err != nil {
+		log.Println("create error:", err)
+	}
+}
+
+func SumQuery() {
+	totalMoney, err := sum1("a")
+	if err != nil {
+		log.Println("sum query error:", err)
+	}
+	log.Println(totalMoney)
+}
+
+func sum1(account string) (totalMoney int, err error) {
+	err = db.Table("user_store").
+		Where("account = ? and created_at between ? and ?", account, 1597289100, 1597289100).
+		//Where("account = ?", account).
+		Select("COALESCE(sum(amt), 0) as sum").
+		Row().
+		Scan(&totalMoney)
+	if err != nil {
+		log.Println("[app_preorder_srv]getTotalChargeMoney, get err: ", err)
+	}
+	return
+}
