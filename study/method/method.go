@@ -33,6 +33,6 @@ func NameTest2() {
 	a2 := reflect.TypeOf(NameOfA)
 
 	fmt.Println("a1 type:", a1)        // a1 type: func(method.A) string
-	fmt.Println("a2 type:", a1)        // a2 type: func(method.A) string
+	fmt.Println("a2 type:", a2)        // a2 type: func(method.A) string
 	fmt.Println("a1 == a2:", a1 == a2) // true
 }

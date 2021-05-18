@@ -1,0 +1,31 @@
+### car info
+#{
+#  "code": 0,
+#  "message": "success",
+#  "data": {
+#    "id": 99,
+#    "name": "cayenne",
+#    "price": 1200000
+#  }
+#}
+GET http://localhost:8188/car/info?id=99&area=1&password=123456
+Accept: application/json
+
+### user info
+#{
+#  "code": 0,
+#  "message": "success",
+#  "data": [
+#    {
+#      "id": 18,
+#      "name": "a",
+#      "createTime": null,
+#      "updateTime": null,
+#      "age": 18,
+#      "birthday": "2021-04-08 03:05:38"
+#    }
+#  ]
+#}
+GET http://localhost:8188/user/find-by-name?name=a
+
+
