@@ -34,7 +34,7 @@ import (
 	"github.com/sirupsen/logrus"
 	"io"
 	"log"
-	"my-gin/routers"
+	"my-gin/web/routers"
 	"net/http"
 	"os"
 	"os/signal"

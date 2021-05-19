@@ -22,7 +22,7 @@ go build grace.go
 
 // 重启服务
 kill -USR2 `ps -ef | grep grace | grep -v grep | awk '{print $2}'`
- */
+*/
 package main
 
 import (
@@ -32,8 +32,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
 	"io"
-	"my-gin/logutil"
-	"my-gin/routers"
+	"my-gin/utils/logger"
+	"my-gin/web/routers"
 	"net/http"
 	"os"
 	"time"
@@ -59,7 +59,7 @@ func main() {
 	}
 
 	initLog()
-	logutil.InitZapLog()
+	utils.InitZapLog()
 
 	if err := gracehttp.Serve(srv); err != nil {
 		panic(fmt.Sprintf("listen error: %s\n", err))
