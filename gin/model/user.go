@@ -1,7 +1,7 @@
 package model
 
 import (
-	utils "my-gin/utils/time"
+	"my-gin/utils"
 )
 
 type User struct {
@@ -21,4 +21,17 @@ type UserInfoResp struct {
 	Name      string         `json:"name"`
 	Age       int            `json:"age"`
 	CreatedAt utils.JsonTime `json:"created_at"`
+}
+
+type HttpResp struct {
+	Code int    `json:"code"`
+	Msg  string `json:"msg"`
+	//Data interface{} `json:"data"`
+	Data struct {
+		List []struct {
+			Name  string `json:"name"`
+			Value string `json:"value"`
+		} `json:"list"`
+		Total int `json:"total"`
+	} `json:"data"`
 }

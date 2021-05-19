@@ -6,7 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
 	_ "my-gin/boot"
-	utils "my-gin/utils/logger"
+	"my-gin/utils"
 	"my-gin/web/routers"
 	"net/http"
 	"time"

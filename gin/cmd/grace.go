@@ -32,7 +32,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
 	"io"
-	"my-gin/utils/logger"
+	"my-gin/utils"
 	"my-gin/web/routers"
 	"net/http"
 	"os"

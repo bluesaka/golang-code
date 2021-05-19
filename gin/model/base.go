@@ -2,7 +2,7 @@ package model
 
 import (
 	"github.com/jinzhu/gorm"
-	utils "my-gin/utils/time"
+	"my-gin/utils"
 	"time"
 )
 

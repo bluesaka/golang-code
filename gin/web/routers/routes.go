@@ -13,5 +13,8 @@ func SetRouters(g *gin.Engine) {
 	{
 		api.GET("/user/login", controllers.UserLogin)
 		api.GET("/user/info", controllers.UserInfo)
+
+		api.GET("/user/http-get", controllers.HttpGet)
+		api.GET("/user/http-post", controllers.HttpPost)
 	}
 }

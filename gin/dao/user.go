@@ -2,7 +2,7 @@ package dao
 
 import (
 	"my-gin/model"
-	utils "my-gin/utils/logger"
+	"my-gin/utils"
 )
 
 func (d *Dao) GetUserInfo(params model.User) (user model.User, err error) {

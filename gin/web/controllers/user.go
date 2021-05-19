@@ -5,7 +5,7 @@ import (
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cast"
 	"my-gin/defs"
-	"my-gin/utils/logger"
+	"my-gin/utils"
 	"os"
 	"time"
 )
@@ -37,6 +37,26 @@ func UserInfo(g *gin.Context) {
 	}
 
 	ret, err := ctl.srv.GetUserInfo(cast.ToInt(id))
+	if err != nil {
+		JsonReturn(g, err.Error(), nil)
+		return
+	}
+
+	JsonReturn(g, defs.SuccessCode, ret)
+}
+
+func HttpGet(g *gin.Context) {
+	ret, err := ctl.srv.HttpGet()
+	if err != nil {
+		JsonReturn(g, err.Error(), nil)
+		return
+	}
+
+	JsonReturn(g, defs.SuccessCode, ret)
+}
+
+func HttpPost(g *gin.Context) {
+	ret, err := ctl.srv.HttpPost()
 	if err != nil {
 		JsonReturn(g, err.Error(), nil)
 		return
