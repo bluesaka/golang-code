@@ -24,6 +24,31 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
+type PhoneOS int32
+
+const (
+	PhoneOS_IOS     PhoneOS = 0
+	PhoneOS_ANDROID PhoneOS = 1
+)
+
+var PhoneOS_name = map[int32]string{
+	0: "IOS",
+	1: "ANDROID",
+}
+
+var PhoneOS_value = map[string]int32{
+	"IOS":     0,
+	"ANDROID": 1,
+}
+
+func (x PhoneOS) String() string {
+	return proto.EnumName(PhoneOS_name, int32(x))
+}
+
+func (PhoneOS) EnumDescriptor() ([]byte, []int) {
+	return fileDescriptor_f8b9800c53a1ba42, []int{0}
+}
+
 type CarReq struct {
 	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -149,28 +174,125 @@ func (m *CarListResp) GetList() []*CarResp {
 	return nil
 }
 
+type StreamReq struct {
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *StreamReq) Reset()         { *m = StreamReq{} }
+func (m *StreamReq) String() string { return proto.CompactTextString(m) }
+func (*StreamReq) ProtoMessage()    {}
+func (*StreamReq) Descriptor() ([]byte, []int) {
+	return fileDescriptor_f8b9800c53a1ba42, []int{3}
+}
+
+func (m *StreamReq) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_StreamReq.Unmarshal(m, b)
+}
+func (m *StreamReq) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_StreamReq.Marshal(b, m, deterministic)
+}
+func (m *StreamReq) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_StreamReq.Merge(m, src)
+}
+func (m *StreamReq) XXX_Size() int {
+	return xxx_messageInfo_StreamReq.Size(m)
+}
+func (m *StreamReq) XXX_DiscardUnknown() {
+	xxx_messageInfo_StreamReq.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_StreamReq proto.InternalMessageInfo
+
+func (m *StreamReq) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+type StreamResp struct {
+	Value                string   `protobuf:"bytes,1,opt,name=value,proto3" json:"value,omitempty"`
+	Os                   PhoneOS  `protobuf:"varint,2,opt,name=os,proto3,enum=proto.PhoneOS" json:"os,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *StreamResp) Reset()         { *m = StreamResp{} }
+func (m *StreamResp) String() string { return proto.CompactTextString(m) }
+func (*StreamResp) ProtoMessage()    {}
+func (*StreamResp) Descriptor() ([]byte, []int) {
+	return fileDescriptor_f8b9800c53a1ba42, []int{4}
+}
+
+func (m *StreamResp) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_StreamResp.Unmarshal(m, b)
+}
+func (m *StreamResp) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_StreamResp.Marshal(b, m, deterministic)
+}
+func (m *StreamResp) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_StreamResp.Merge(m, src)
+}
+func (m *StreamResp) XXX_Size() int {
+	return xxx_messageInfo_StreamResp.Size(m)
+}
+func (m *StreamResp) XXX_DiscardUnknown() {
+	xxx_messageInfo_StreamResp.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_StreamResp proto.InternalMessageInfo
+
+func (m *StreamResp) GetValue() string {
+	if m != nil {
+		return m.Value
+	}
+	return ""
+}
+
+func (m *StreamResp) GetOs() PhoneOS {
+	if m != nil {
+		return m.Os
+	}
+	return PhoneOS_IOS
+}
+
 func init() {
+	proto.RegisterEnum("proto.PhoneOS", PhoneOS_name, PhoneOS_value)
 	proto.RegisterType((*CarReq)(nil), "proto.CarReq")
 	proto.RegisterType((*CarResp)(nil), "proto.CarResp")
 	proto.RegisterType((*CarListResp)(nil), "proto.CarListResp")
+	proto.RegisterType((*StreamReq)(nil), "proto.StreamReq")
+	proto.RegisterType((*StreamResp)(nil), "proto.StreamResp")
 }
 
 func init() { proto.RegisterFile("car.proto", fileDescriptor_f8b9800c53a1ba42) }
 
 var fileDescriptor_f8b9800c53a1ba42 = []byte{
-	// 191 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0x4c, 0x4e, 0x2c, 0xd2,
-	0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0x62, 0x05, 0x53, 0x4a, 0x32, 0x5c, 0x6c, 0xce, 0x89, 0x45,
-	0x41, 0xa9, 0x85, 0x42, 0x42, 0x5c, 0x2c, 0x79, 0x89, 0xb9, 0xa9, 0x12, 0x8c, 0x0a, 0x8c, 0x1a,
-	0x9c, 0x41, 0x60, 0xb6, 0x92, 0x31, 0x17, 0x3b, 0x58, 0xb6, 0xb8, 0x00, 0x9b, 0xb4, 0x90, 0x08,
-	0x17, 0x6b, 0x41, 0x51, 0x66, 0x72, 0xaa, 0x04, 0x93, 0x02, 0xa3, 0x06, 0x4b, 0x10, 0x84, 0xa3,
-	0x64, 0xc8, 0xc5, 0xed, 0x9c, 0x58, 0xe4, 0x93, 0x59, 0x5c, 0x02, 0xd6, 0xa8, 0xc4, 0xc5, 0x92,
-	0x93, 0x59, 0x5c, 0x22, 0xc1, 0xa8, 0xc0, 0xac, 0xc1, 0x6d, 0xc4, 0x07, 0xb1, 0x5e, 0x0f, 0x6a,
-	0x6c, 0x10, 0x58, 0xce, 0xa8, 0x83, 0x91, 0x8b, 0xcb, 0x39, 0xb1, 0x28, 0x38, 0xb5, 0xa8, 0x2c,
-	0x33, 0x39, 0x55, 0x48, 0x93, 0x8b, 0x05, 0xa4, 0x5d, 0x88, 0x17, 0x59, 0x71, 0xa1, 0x94, 0x10,
-	0x82, 0x0b, 0x37, 0x5d, 0x8d, 0x8b, 0x35, 0xb0, 0x34, 0xb5, 0xa8, 0x12, 0x5d, 0x2d, 0x9a, 0x3d,
-	0x42, 0xea, 0x5c, 0x6c, 0xa1, 0x05, 0x29, 0x89, 0x25, 0xa9, 0x04, 0x14, 0x26, 0xb1, 0x81, 0xb9,
-	0xc6, 0x80, 0x00, 0x00, 0x00, 0xff, 0xff, 0x75, 0x73, 0xec, 0xcc, 0x2b, 0x01, 0x00, 0x00,
+	// 320 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x50, 0x51, 0x4f, 0xf2, 0x30,
+	0x14, 0xfd, 0x0a, 0x83, 0x85, 0x3b, 0x3e, 0x82, 0x37, 0x3e, 0x10, 0x62, 0x84, 0xec, 0x41, 0xa7,
+	0x0f, 0x04, 0x21, 0xc6, 0x67, 0x1d, 0x2f, 0x24, 0x46, 0x74, 0x8b, 0x3f, 0xa0, 0xe0, 0x4d, 0x5c,
+	0x32, 0x68, 0x69, 0x0b, 0x89, 0xff, 0xc0, 0x1f, 0xe4, 0x0f, 0x34, 0xeb, 0x06, 0x9a, 0x45, 0x63,
+	0x78, 0x6a, 0xcf, 0xbd, 0xe7, 0xf4, 0x9c, 0x53, 0x68, 0x2c, 0xb8, 0x1a, 0x48, 0x25, 0x8c, 0xc0,
+	0x9a, 0x3d, 0xfc, 0x13, 0xa8, 0x87, 0x5c, 0x45, 0xb4, 0x46, 0x04, 0x67, 0xc5, 0x97, 0xd4, 0x61,
+	0x7d, 0x16, 0x34, 0x22, 0x7b, 0xf7, 0xc7, 0xe0, 0xda, 0xad, 0x96, 0x3f, 0xad, 0xf1, 0x18, 0x6a,
+	0x52, 0x25, 0x0b, 0xea, 0x54, 0xfa, 0x2c, 0x70, 0xa2, 0x1c, 0xf8, 0x57, 0xe0, 0x85, 0x5c, 0xdd,
+	0x27, 0xda, 0x58, 0xa1, 0x0f, 0x4e, 0x9a, 0x68, 0xd3, 0x61, 0xfd, 0x6a, 0xe0, 0x8d, 0x5a, 0xb9,
+	0xfd, 0xa0, 0x78, 0x36, 0xb2, 0x3b, 0xbf, 0x07, 0x8d, 0xd8, 0x28, 0xe2, 0xcb, 0xdf, 0x82, 0xdc,
+	0x01, 0xec, 0x08, 0x5a, 0x66, 0xbe, 0x5b, 0x9e, 0x6e, 0x76, 0x94, 0x1c, 0xe0, 0x29, 0x54, 0x84,
+	0xb6, 0x51, 0x5a, 0x7b, 0x9b, 0xc7, 0x57, 0xb1, 0xa2, 0x59, 0x1c, 0x55, 0x84, 0xbe, 0xec, 0x81,
+	0x5b, 0x40, 0x74, 0xa1, 0x3a, 0x9d, 0xc5, 0xed, 0x7f, 0xe8, 0x81, 0x7b, 0xfb, 0x30, 0x89, 0x66,
+	0xd3, 0x49, 0x9b, 0x8d, 0xde, 0x19, 0x40, 0xc8, 0x55, 0x4c, 0x6a, 0x9b, 0x2c, 0x08, 0x2f, 0xc0,
+	0xc9, 0x4a, 0xe0, 0xff, 0xef, 0x91, 0xd7, 0x5d, 0xfc, 0x82, 0xfb, 0x8e, 0x67, 0x50, 0x7b, 0xda,
+	0x90, 0x7a, 0x2b, 0x73, 0x4b, 0x6d, 0xf1, 0x1c, 0xea, 0xcf, 0xf2, 0x85, 0x1b, 0xfa, 0x83, 0x38,
+	0xfa, 0x60, 0xe0, 0xd9, 0xb0, 0x79, 0x6b, 0xbc, 0x86, 0x66, 0x16, 0x8b, 0x54, 0x81, 0xdb, 0x05,
+	0x7f, 0xff, 0x6b, 0xdd, 0xa3, 0xd2, 0x44, 0xcb, 0x21, 0xcb, 0x64, 0x61, 0x9a, 0xd0, 0xca, 0x1c,
+	0x20, 0x0b, 0x18, 0xde, 0x40, 0x73, 0x22, 0x36, 0xf3, 0x94, 0x0e, 0x92, 0x0d, 0xd9, 0xbc, 0x6e,
+	0xa7, 0xe3, 0xcf, 0x00, 0x00, 0x00, 0xff, 0xff, 0x69, 0x50, 0x56, 0x5b, 0x68, 0x02, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -322,5 +444,248 @@ var _CarService_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
+	Metadata: "car.proto",
+}
+
+// PhoneStreamClient is the client API for PhoneStream service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
+type PhoneStreamClient interface {
+	// 服务端推送流
+	ServerStream(ctx context.Context, in *StreamReq, opts ...grpc.CallOption) (PhoneStream_ServerStreamClient, error)
+	// 客户端推送流
+	ClientStream(ctx context.Context, opts ...grpc.CallOption) (PhoneStream_ClientStreamClient, error)
+	// 双向流
+	DoubleStream(ctx context.Context, opts ...grpc.CallOption) (PhoneStream_DoubleStreamClient, error)
+}
+
+type phoneStreamClient struct {
+	cc *grpc.ClientConn
+}
+
+func NewPhoneStreamClient(cc *grpc.ClientConn) PhoneStreamClient {
+	return &phoneStreamClient{cc}
+}
+
+func (c *phoneStreamClient) ServerStream(ctx context.Context, in *StreamReq, opts ...grpc.CallOption) (PhoneStream_ServerStreamClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_PhoneStream_serviceDesc.Streams[0], "/proto.PhoneStream/ServerStream", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &phoneStreamServerStreamClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type PhoneStream_ServerStreamClient interface {
+	Recv() (*StreamResp, error)
+	grpc.ClientStream
+}
+
+type phoneStreamServerStreamClient struct {
+	grpc.ClientStream
+}
+
+func (x *phoneStreamServerStreamClient) Recv() (*StreamResp, error) {
+	m := new(StreamResp)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *phoneStreamClient) ClientStream(ctx context.Context, opts ...grpc.CallOption) (PhoneStream_ClientStreamClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_PhoneStream_serviceDesc.Streams[1], "/proto.PhoneStream/ClientStream", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &phoneStreamClientStreamClient{stream}
+	return x, nil
+}
+
+type PhoneStream_ClientStreamClient interface {
+	Send(*StreamReq) error
+	CloseAndRecv() (*StreamResp, error)
+	grpc.ClientStream
+}
+
+type phoneStreamClientStreamClient struct {
+	grpc.ClientStream
+}
+
+func (x *phoneStreamClientStreamClient) Send(m *StreamReq) error {
+	return x.ClientStream.SendMsg(m)
+}
+
+func (x *phoneStreamClientStreamClient) CloseAndRecv() (*StreamResp, error) {
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	m := new(StreamResp)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *phoneStreamClient) DoubleStream(ctx context.Context, opts ...grpc.CallOption) (PhoneStream_DoubleStreamClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_PhoneStream_serviceDesc.Streams[2], "/proto.PhoneStream/DoubleStream", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &phoneStreamDoubleStreamClient{stream}
+	return x, nil
+}
+
+type PhoneStream_DoubleStreamClient interface {
+	Send(*StreamReq) error
+	Recv() (*StreamResp, error)
+	grpc.ClientStream
+}
+
+type phoneStreamDoubleStreamClient struct {
+	grpc.ClientStream
+}
+
+func (x *phoneStreamDoubleStreamClient) Send(m *StreamReq) error {
+	return x.ClientStream.SendMsg(m)
+}
+
+func (x *phoneStreamDoubleStreamClient) Recv() (*StreamResp, error) {
+	m := new(StreamResp)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+// PhoneStreamServer is the server API for PhoneStream service.
+type PhoneStreamServer interface {
+	// 服务端推送流
+	ServerStream(*StreamReq, PhoneStream_ServerStreamServer) error
+	// 客户端推送流
+	ClientStream(PhoneStream_ClientStreamServer) error
+	// 双向流
+	DoubleStream(PhoneStream_DoubleStreamServer) error
+}
+
+// UnimplementedPhoneStreamServer can be embedded to have forward compatible implementations.
+type UnimplementedPhoneStreamServer struct {
+}
+
+func (*UnimplementedPhoneStreamServer) ServerStream(req *StreamReq, srv PhoneStream_ServerStreamServer) error {
+	return status.Errorf(codes.Unimplemented, "method ServerStream not implemented")
+}
+func (*UnimplementedPhoneStreamServer) ClientStream(srv PhoneStream_ClientStreamServer) error {
+	return status.Errorf(codes.Unimplemented, "method ClientStream not implemented")
+}
+func (*UnimplementedPhoneStreamServer) DoubleStream(srv PhoneStream_DoubleStreamServer) error {
+	return status.Errorf(codes.Unimplemented, "method DoubleStream not implemented")
+}
+
+func RegisterPhoneStreamServer(s *grpc.Server, srv PhoneStreamServer) {
+	s.RegisterService(&_PhoneStream_serviceDesc, srv)
+}
+
+func _PhoneStream_ServerStream_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(StreamReq)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(PhoneStreamServer).ServerStream(m, &phoneStreamServerStreamServer{stream})
+}
+
+type PhoneStream_ServerStreamServer interface {
+	Send(*StreamResp) error
+	grpc.ServerStream
+}
+
+type phoneStreamServerStreamServer struct {
+	grpc.ServerStream
+}
+
+func (x *phoneStreamServerStreamServer) Send(m *StreamResp) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _PhoneStream_ClientStream_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(PhoneStreamServer).ClientStream(&phoneStreamClientStreamServer{stream})
+}
+
+type PhoneStream_ClientStreamServer interface {
+	SendAndClose(*StreamResp) error
+	Recv() (*StreamReq, error)
+	grpc.ServerStream
+}
+
+type phoneStreamClientStreamServer struct {
+	grpc.ServerStream
+}
+
+func (x *phoneStreamClientStreamServer) SendAndClose(m *StreamResp) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func (x *phoneStreamClientStreamServer) Recv() (*StreamReq, error) {
+	m := new(StreamReq)
+	if err := x.ServerStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func _PhoneStream_DoubleStream_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(PhoneStreamServer).DoubleStream(&phoneStreamDoubleStreamServer{stream})
+}
+
+type PhoneStream_DoubleStreamServer interface {
+	Send(*StreamResp) error
+	Recv() (*StreamReq, error)
+	grpc.ServerStream
+}
+
+type phoneStreamDoubleStreamServer struct {
+	grpc.ServerStream
+}
+
+func (x *phoneStreamDoubleStreamServer) Send(m *StreamResp) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func (x *phoneStreamDoubleStreamServer) Recv() (*StreamReq, error) {
+	m := new(StreamReq)
+	if err := x.ServerStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+var _PhoneStream_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "proto.PhoneStream",
+	HandlerType: (*PhoneStreamServer)(nil),
+	Methods:     []grpc.MethodDesc{},
+	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "ServerStream",
+			Handler:       _PhoneStream_ServerStream_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "ClientStream",
+			Handler:       _PhoneStream_ClientStream_Handler,
+			ClientStreams: true,
+		},
+		{
+			StreamName:    "DoubleStream",
+			Handler:       _PhoneStream_DoubleStream_Handler,
+			ServerStreams: true,
+			ClientStreams: true,
+		},
+	},
 	Metadata: "car.proto",
 }

@@ -1,3 +1,4 @@
+//  protoc --go_out=plugins=grpc:. car.proto
 syntax = "proto3";
 
 package proto;
@@ -19,6 +20,30 @@ service CarService {
   rpc List(CarReq) returns (CarListResp);
   rpc Query(CarReq) returns (CarResp);
   rpc Update(CarReq) returns (CarResp);
+}
 
-  // todo stream rpc
+message StreamReq {
+  string name = 1;
+}
+
+enum PhoneOS {
+  IOS = 0; //proto3版本中，首成员必须为0，成员不应有相同的值
+  ANDROID = 1;
+}
+
+message StreamResp {
+  string value = 1;
+  PhoneOS os = 2;
+}
+
+// stream推送数据，适合传输一些大数据，或者服务端和鹅湖段长时间的数据交互
+service PhoneStream {
+  // 服务端推送流
+  rpc ServerStream(StreamReq) returns (stream StreamResp);
+
+  // 客户端推送流
+  rpc ClientStream(stream StreamReq) returns (StreamResp);
+
+  // 双向流
+  rpc DoubleStream (stream StreamReq) returns (stream StreamResp);
 }
