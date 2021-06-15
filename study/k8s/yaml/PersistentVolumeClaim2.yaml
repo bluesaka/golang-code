@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  annotations:
+    pv.kubernetes.io/bind-completed: 'yes'
+    pv.kubernetes.io/bound-by-controller: 'yes'
+  creationTimestamp: '2021-06-08T10:42:47Z'
+  finalizers:
+    - kubernetes.io/pvc-protection
+  name: topic-rpc-filebeat-volume
+  namespace: topic-go
+  resourceVersion: '1134410176'
+  selfLink: /api/v1/namespaces/topic-go/persistentvolumeclaims/topic-rpc-filebeat-volume
+  uid: 6444aa63-a089-4762-81bd-5f9690dcf68e
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 20Gi
+  selector:
+    matchLabels:
+      alicloud-pvname: topic-go-pvc-topic-rpc-filebeat-volume
+  storageClassName: nas
+  volumeMode: Filesystem
+  volumeName: topic-go-pvc-topic-rpc-filebeat-volume
+status:
+  accessModes:
+    - ReadWriteMany
+  capacity:
+    storage: 20Gi
+  phase: Bound

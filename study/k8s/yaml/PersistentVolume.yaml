@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  annotations:
+    pv.kubernetes.io/bound-by-controller: 'yes'
+  creationTimestamp: '2021-06-08T10:42:28Z'
+  finalizers:
+    - kubernetes.io/pv-protection
+  labels:
+    alicloud-pvname: topic-go-pvc-topic-rpc-filebeat-volume
+  name: topic-go-pvc-topic-rpc-filebeat-volume
+  resourceVersion: '1134410178'
+  selfLink: /api/v1/persistentvolumes/topic-go-pv-topic-rpc-filebeat-volume
+  uid: 37001c97-e4f0-4a17-a43e-8c762e43e793
+spec:
+  accessModes:
+    - ReadWriteMany
+  capacity:
+    storage: 20Gi
+  claimRef:
+    apiVersion: v1
+    kind: PersistentVolumeClaim
+    name: topic-rpc-filebeat-volume
+    namespace: topic-go
+    resourceVersion: '1134410173'
+    uid: 6444aa63-a089-4762-81bd-5f9690dcf89c
+  csi:
+    driver: nasplugin.csi.alibabacloud.com
+    volumeAttributes:
+      path: /topic-rpc-filebeat-volume
+      server: 0cbxxx.cn-hangzhou.nas.aliyuncs.com
+      vers: '3'
+    volumeHandle: topic-go-pvc-topic-rpc-filebeat-volume
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: nas
+  volumeMode: Filesystem
+status:
+  phase: Bound

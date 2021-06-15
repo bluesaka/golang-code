@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  creationTimestamp: '2021-06-07T06:00:39Z'
+  generation: 3
+  labels:
+    app: topic-api-filebeat
+  name: topic-api-filebeat
+  namespace: topic-go
+  resourceVersion: '1141671255'
+  selfLink: /apis/apps/v1/namespaces/topic-go/statefulsets/topic-api-filebeat
+  uid: 358d5cdc-abae-4270-81b0-03023bb04c28
+spec:
+  podManagementPolicy: OrderedReady
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: topic-api-filebeat
+  serviceName: topic-api-filebeat-svc
+  template:
+    metadata:
+      labels:
+        app: topic-api-filebeat
+    spec:
+      containers:
+        - image: 'harbor.xxx.com/public/filebeat:v1'
+          imagePullPolicy: IfNotPresent
+          name: topic-api-filebeat
+          resources:
+            requests:
+              cpu: 250m
+              memory: 512Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+            - mountPath: /app/logs
+              name: volume-topic-api-filebeat
+            - mountPath: /etc/filebeat
+              name: volume-1623045624926
+            - mountPath: /etc/localtime
+              name: volume-localtime
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+        - name: volume-topic-api-filebeat
+          persistentVolumeClaim:
+            claimName: topic-api-filebeat
+        - configMap:
+            defaultMode: 420
+            name: topic-api-configmap
+          name: volume-1623045624926
+        - hostPath:
+            path: /etc/localtime
+            type: ''
+          name: volume-localtime
+  updateStrategy:
+    type: RollingUpdate
+status:
+  collisionCount: 0
+  currentReplicas: 1
+  currentRevision: topic-api-filebeat-79498b5635
+  observedGeneration: 3
+  readyReplicas: 1
+  replicas: 1
+  updateRevision: topic-api-filebeat-79498b5635
+  updatedReplicas: 1

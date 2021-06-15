@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ConfigMap
+data:
+  filebeat.yml: |-
+    filebeat.inputs:
+      - type: log
+        enabled: true
+        paths:
+          - /app/logs/topic.rpc/topic-rpc-*/*.log
+    output:
+      elasticsearch:
+        enabled: true
+        hosts: ["192.168.1.123:19200"]
+        index: "sgs-topic-prod-rpc-%{+yyyy.MM.dd}"
+    setup:
+      ilm:
+        enabled: false
+      template:
+        enabled: true
+        name: "filebeat-test"
+        pattern: "filebeat-test-*"
+metadata:
+  creationTimestamp: '2021-06-08T10:40:25Z'
+  name: topic-rpc-volume
+  namespace: topic-go
+  resourceVersion: '11343969888'
+  selfLink: /api/v1/namespaces/topic-go/configmaps/topic-rpc-volume
+  uid: e9dbb81c-8eef-47c5-8449-33c6ed899166

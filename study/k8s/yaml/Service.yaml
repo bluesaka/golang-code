@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    service.beta.kubernetes.io/alibaba-cloud-loadbalancer-spec: slb.s1.small
+  creationTimestamp: '2021-06-07T06:28:55Z'
+  labels:
+    service.beta.kubernetes.io/hash: a319ba33d8f3ea2154100eeed671f2e5348f7bae046b2925d49ed681
+  name: topic-api
+  namespace: topic-go
+  resourceVersion: '1124301456'
+  selfLink: /api/v1/namespaces/topic-go/services/topic-api
+  uid: 73f85a80-d055-4735-843d-daff3934a8e3
+spec:
+  clusterIP: 172.88.77.66
+  externalTrafficPolicy: Local
+  healthCheckNodePort: 31266
+  ports:
+    - name: topic-api
+      nodePort: 32139
+      port: 80
+      protocol: TCP
+      targetPort: 8081
+  selector:
+    app: topic-api
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer:
+    ingress:
+      - ip: 118.23.76.5

@@ -1,0 +1,29 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/service-weight: ''
+  creationTimestamp: '2021-06-07T10:18:03Z'
+  generation: 17
+  name: topic-api-ingress
+  namespace: topic-go
+  resourceVersion: '1188817168'
+  selfLink: /apis/extensions/v1beta1/namespaces/topic-go/ingresses/topic-api-ingress
+  uid: d2575111-fd08-4204-a7af-1f1286f38352
+spec:
+  rules:
+    - host: ghdtqz.sanguosha.com
+      http:
+        paths:
+          - backend:
+              serviceName: topic-api
+              servicePort: 80
+            path: /
+  tls:
+    - hosts:
+        - abc.xxx.com
+      secretName: topic-api-cert
+status:
+  loadBalancer:
+    ingress:
+      - ip: 81.252.123.168
