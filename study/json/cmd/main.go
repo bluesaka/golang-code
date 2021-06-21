@@ -13,10 +13,10 @@ func main() {
 		Name: "hello & world",
 		Age:  18,
 	}
-	b, _ := json2.Marshal(u)
+	b, _ := json2.MyMarshal(u)
 	log.Println(b)
 
-	user := json2.Unmarshal(b)
+	user := json2.MyUnmarshal(b)
 	log.Printf("%+v\n", user)
 
 	// json Marshal `hello & world` -> `hello \u0026 world`

@@ -2,7 +2,7 @@
 gin + endless 平滑重启
 github.com/fvbock/endless
 
-结论：重启时未完成的请求会重复执行，PID会变化，不如grace
+结论：重启时未完成的请求会重复执行，PID会变化，不适用于supervisor平滑重启
 
 # 第一次构建项目
 go build endless.go

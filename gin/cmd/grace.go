@@ -3,7 +3,7 @@ gin + grace 平滑重启
 github.com/facebookgo/grace
 
 结论：
-重启时未完成的请求PID不会变，还是重启前的PID，也不会重复执行，符合平滑重启特性
+重启时未完成的请求PID不会变，还是重启前的PID，也不会重复执行。新的请求PID会变，不适用于supervisor平滑重启
 
 // 构建项目
 go build grace.go

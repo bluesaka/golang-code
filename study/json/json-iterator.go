@@ -15,7 +15,7 @@ type User struct {
 
 var jsonObj = jsoniter.ConfigCompatibleWithStandardLibrary
 
-func Marshal(u User) ([]byte, error) {
+func MyMarshal(u User) ([]byte, error) {
 	//b, err := jsoniter.Marshal(u)
 	b, err := jsonObj.Marshal(u)
 	if err != nil {
@@ -25,7 +25,7 @@ func Marshal(u User) ([]byte, error) {
 	return b, nil
 }
 
-func Unmarshal(b []byte) User {
+func MyUnmarshal(b []byte) User {
 	var u User
 	if err := jsoniter.Unmarshal(b, &u); err != nil {
 		log.Println(err)

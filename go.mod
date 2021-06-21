@@ -42,12 +42,14 @@ require (
 	github.com/stretchr/testify v1.7.0
 	github.com/tal-tech/go-zero v1.1.6
 	github.com/valyala/fasthttp v1.23.0
+	github.com/xujiajun/nutsdb v0.6.0
 	go.etcd.io/etcd v0.0.0-20200402134248-51bdeb39e698
 	go.uber.org/ratelimit v0.2.0
 	go.uber.org/zap v1.15.0
 	golang.org/x/crypto v0.0.0-20210513164829-c07d793c2f9a // indirect
 	golang.org/x/lint v0.0.0-20201208152925-83fdc39ff7b5 // indirect
 	golang.org/x/net v0.0.0-20210423184538-5f58ad60dda6 // indirect
+	golang.org/x/sys v0.0.0-20210616094352-59db8d763f22 // indirect
 	golang.org/x/time v0.0.0-20210220033141-f8bda1e9f3ba
 	golang.org/x/tools v0.1.0 // indirect
 	google.golang.org/grpc v1.37.0
