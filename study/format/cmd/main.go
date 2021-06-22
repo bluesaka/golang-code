@@ -55,4 +55,8 @@ func main() {
 
 	i := 111
 	fmt.Printf("%p\n", &i)
+
+	// 左对齐，6 30为宽度 (like gin)
+	fmt.Printf("[DD]%-6s %-30s --> %s\n", "GET", "/api/user/info", "/web/controllers.UserInfo")
+	fmt.Printf("[DD]%-6s %-30s --> %s\n", "POST", "/api/user/login", "/web/controllers.UserLogin")
 }

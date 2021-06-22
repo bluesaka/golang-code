@@ -26,6 +26,7 @@ func Etcd1() {
 		log.Println("etcd put failed, err:", err)
 	}
 
+	//resp, err := client.Get(ctx, "test-key", clientv3.WithPrefix())
 	resp, err := client.Get(ctx, "test-key")
 	if err != nil {
 		log.Println("etcd get failed, err:", err)
