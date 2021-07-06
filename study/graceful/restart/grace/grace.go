@@ -28,6 +28,7 @@ package main
 
 import (
 	"github.com/facebookgo/grace/gracehttp"
+	"go-code/study/graceful/restart/grace/cron"
 	"go-code/study/log"
 	"net/http"
 	"os"
@@ -35,9 +36,10 @@ import (
 )
 
 func main() {
+	log.ZapLogger.Info("server start")
+	cron.Cron()
 	gracehttp.Serve(
 		&http.Server{Addr: ":5001", Handler: newGraceHandler()},
-		&http.Server{Addr: ":5002", Handler: newGraceHandler()},
 	)
 }
 
@@ -62,3 +64,4 @@ func newGraceHandler() http.Handler {
 	})
 	return mux
 }
+

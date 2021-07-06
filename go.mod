@@ -5,6 +5,7 @@ go 1.15
 require (
 	github.com/360EntSecGroup-Skylar/excelize/v2 v2.4.0
 	github.com/Shopify/sarama v1.29.0
+	github.com/apache/rocketmq-client-go/v2 v2.1.0
 	github.com/deepmap/oapi-codegen v1.8.1 // indirect
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/elastic/go-elasticsearch/v7 v7.13.1
@@ -18,10 +19,11 @@ require (
 	github.com/facebookgo/subset v0.0.0-20200203212716-c811ad88dec4 // indirect
 	github.com/ghodss/yaml v1.0.0
 	github.com/globalsign/mgo v0.0.0-20181015135952-eeefdecb41b8
-	github.com/go-redis/redis v6.15.9+incompatible // indirect
+	github.com/go-redis/redis v6.15.9+incompatible
 	github.com/go-redis/redis/v8 v8.0.0-alpha.2
 	github.com/go-sql-driver/mysql v1.5.0
 	github.com/gojektech/heimdall/v6 v6.1.0
+	github.com/golang/mock v1.6.0 // indirect
 	github.com/golang/protobuf v1.4.2
 	github.com/gomodule/redigo v2.0.0+incompatible
 	github.com/google/uuid v1.1.2 // indirect
@@ -32,7 +34,8 @@ require (
 	github.com/influxdata/influxdb-client-go/v2 v2.4.0
 	github.com/influxdata/line-protocol v0.0.0-20210311194329-9aa0e372d097 // indirect
 	github.com/jinzhu/gorm v1.9.16
-	github.com/json-iterator/go v1.1.10
+	github.com/json-iterator/go v1.1.11
+	github.com/labstack/gommon v0.3.0
 	github.com/nacos-group/nacos-sdk-go v1.0.7
 	github.com/natefinch/lumberjack v2.0.0+incompatible
 	github.com/nxadm/tail v1.4.8 // indirect
@@ -41,6 +44,7 @@ require (
 	github.com/opentracing/opentracing-go v1.2.0 // indirect
 	github.com/openzipkin-contrib/zipkin-go-opentracing v0.4.5
 	github.com/openzipkin/zipkin-go v0.2.2
+	github.com/robfig/cron v1.2.0
 	github.com/silenceper/wechat/v2 v2.0.6
 	github.com/sirupsen/logrus v1.8.1
 	github.com/smartystreets/assertions v1.0.0 // indirect
@@ -48,18 +52,21 @@ require (
 	github.com/streadway/amqp v1.0.0
 	github.com/stretchr/testify v1.7.0
 	github.com/tal-tech/go-zero v1.1.6
+	github.com/tidwall/gjson v1.8.1 // indirect
+	github.com/tidwall/pretty v1.2.0 // indirect
 	github.com/tmc/grpc-websocket-proxy v0.0.0-20190109142713-0ad062ec5ee5 // indirect
 	github.com/valyala/fasthttp v1.23.0
 	github.com/xujiajun/nutsdb v0.6.0
 	go.etcd.io/etcd v0.0.0-20200402134248-51bdeb39e698
+	go.uber.org/atomic v1.8.0 // indirect
 	go.uber.org/ratelimit v0.2.0
 	go.uber.org/zap v1.15.0
 	golang.org/x/crypto v0.0.0-20210616213533-5ff15b29337e // indirect
 	golang.org/x/lint v0.0.0-20201208152925-83fdc39ff7b5 // indirect
 	golang.org/x/net v0.0.0-20210614182718-04defd469f4e
-	golang.org/x/sys v0.0.0-20210616094352-59db8d763f22 // indirect
+	golang.org/x/sys v0.0.0-20210630005230-0f9fa26af87c // indirect
 	golang.org/x/time v0.0.0-20210220033141-f8bda1e9f3ba
-	golang.org/x/tools v0.1.0 // indirect
+	golang.org/x/tools v0.1.1
 	google.golang.org/grpc v1.37.0
 	google.golang.org/protobuf v1.26.0-rc.1 // indirect
 	gopkg.in/fsnotify.v1 v1.4.7
