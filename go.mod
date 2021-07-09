@@ -5,6 +5,7 @@ go 1.15
 require (
 	github.com/360EntSecGroup-Skylar/excelize/v2 v2.4.0
 	github.com/Shopify/sarama v1.29.0
+	github.com/alibaba/sentinel-golang v1.0.2 // indirect
 	github.com/apache/rocketmq-client-go/v2 v2.1.0
 	github.com/deepmap/oapi-codegen v1.8.1 // indirect
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
@@ -44,6 +45,7 @@ require (
 	github.com/opentracing/opentracing-go v1.2.0 // indirect
 	github.com/openzipkin-contrib/zipkin-go-opentracing v0.4.5
 	github.com/openzipkin/zipkin-go v0.2.2
+	github.com/prometheus/client_golang v1.5.1
 	github.com/robfig/cron v1.2.0
 	github.com/silenceper/wechat/v2 v2.0.6
 	github.com/sirupsen/logrus v1.8.1

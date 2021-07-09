@@ -9,43 +9,60 @@ package main
 
 import (
 	"github.com/tal-tech/go-zero/core/limit"
-	"github.com/tal-tech/go-zero/core/logx"
 	"github.com/tal-tech/go-zero/core/stores/redis"
+	"log"
+	"time"
 )
 
 const (
-	seconds = 1
+	seconds = 2
 	total   = 100
-	quota   = 5
+	quota   = 10
 )
 
 func main() {
 	periodLimit()
 }
 
-func periodLimit() bool {
+func periodLimit() {
 	pl := limit.NewPeriodLimit(seconds, quota, redis.NewRedis("127.0.0.1:6379", redis.NodeType, ""), "periodlimit")
 	key := "first"
-	code, err := pl.Take(key)
-	if err != nil {
-		logx.Error(err)
-		return true
-	}
+	//code, err := pl.Take(key)
+	//if err != nil {
+	//	logx.Error(err)
+	//	return true
+	//}
 
-	switch code {
-	case limit.OverQuota:
-		logx.Errorf("OverQuota key: %v", key)
-		return false
-	case limit.Allowed:
-		logx.Infof("AllowedQuota key: %v", key)
-		return true
-	case limit.HitQuota:
-		logx.Errorf("HitQuota key: %v", key)
-		// todo: maybe we need to let users know they hit the quota
-		return false
-	default:
-		logx.Errorf("DefaultQuota key: %v", key)
-		// unknown response, we just let the sms go
-		return true
+	for i := 0; i < 5; i++ {
+		n := 0
+		switch i {
+		case 0:
+			n = 2
+		case 1:
+			n = 20
+		case 2:
+			n = 8
+		case 3:
+			n = 5
+		case 4:
+			n = 6
+		}
+		for j := 0; j < n; j++ {
+			code, err := pl.Take(key)
+			if err != nil {
+				panic(err)
+			}
+			switch code {
+			case limit.OverQuota:
+				log.Println("over")
+			case limit.Allowed:
+				log.Println("allow")
+			case limit.HitQuota:
+				log.Println("hit")
+			default:
+				log.Println("default")
+			}
+		}
+		time.Sleep(time.Second)
 	}
 }
