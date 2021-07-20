@@ -15,7 +15,6 @@ es_pass = ""
 
 # Path to store data, like master.info, if not set or empty,
 # we must use this to support breakpoint resume syncing.
-# TODO: support other storage, like etcd.
 data_dir = "./var"
 
 # Inner Http status address

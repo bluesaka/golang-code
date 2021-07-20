@@ -17,9 +17,11 @@ require (
 	github.com/go-ole/go-ole v1.2.5 // indirect
 	github.com/go-sql-driver/mysql v1.5.0
 	github.com/jinzhu/gorm v1.9.16
-	github.com/jpillora/overseer v1.1.6 // indirect
+	github.com/jpillora/overseer v1.1.6
 	github.com/json-iterator/go v1.1.9
 	github.com/natefinch/lumberjack v2.0.0+incompatible
+	github.com/openzipkin-contrib/zipkin-go-opentracing v0.4.5
+	github.com/openzipkin/zipkin-go v0.2.5
 	github.com/sirupsen/logrus v1.8.1
 	github.com/spf13/cast v1.3.1
 	github.com/spf13/viper v1.7.1

@@ -10,7 +10,18 @@ import (
 )
 
 func main() {
-	conn, err := grpc.Dial("127.0.0.1:9801", grpc.WithInsecure())
+	opts := []grpc.DialOption{
+		grpc.WithInsecure(),
+	}
+
+	// TLS
+	//c, err := credentials.NewClientTLSFromFile("/path/to/server.pem", "grpc-tls-test")
+	//if err != nil {
+	//	panic(err)
+	//}
+	//opts = append(opts, grpc.WithTransportCredentials(c))
+
+	conn, err := grpc.Dial("127.0.0.1:9801", opts...)
 	if err != nil {
 		panic(err)
 	}

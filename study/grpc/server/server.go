@@ -10,11 +10,17 @@ import (
 	"net"
 )
 
-// todo TLS
 func main() {
 	opts := []grpc.ServerOption{
 		grpc_middleware.WithUnaryServerChain(),
 	}
+
+	// TLS
+	//c, err := credentials.NewServerTLSFromFile("/path/to/server.pem", "/path/to/serer.key")
+	//if err != nil {
+	//	panic(err)
+	//}
+	//opts = append(opts, grpc.Creds(c))
 
 	grpcServer := grpc.NewServer(opts...)
 	proto.RegisterCarServiceServer(grpcServer, server.NewCarServer())

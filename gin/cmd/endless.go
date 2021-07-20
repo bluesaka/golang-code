@@ -45,12 +45,10 @@ import (
 func main() {
 	port := flag.String("port", "6002", "port")
 	flag.Parse()
-
+	r := gin.Default()
 	if true {
 		gin.SetMode(gin.ReleaseMode)
 	}
-
-	r := gin.Default()
 	routers.SetRouters(r)
 
 	srv := endless.NewServer(":"+*port, r)

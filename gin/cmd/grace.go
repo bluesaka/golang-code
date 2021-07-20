@@ -30,8 +30,14 @@ import (
 	"fmt"
 	"github.com/facebookgo/grace/gracehttp"
 	"github.com/gin-gonic/gin"
+	"github.com/opentracing/opentracing-go"
+	zkOt "github.com/openzipkin-contrib/zipkin-go-opentracing"
+	"github.com/openzipkin/zipkin-go"
+	"github.com/openzipkin/zipkin-go/reporter"
+	zkHttp "github.com/openzipkin/zipkin-go/reporter/http"
 	"github.com/sirupsen/logrus"
 	"io"
+	_ "my-gin/boot"
 	"my-gin/utils"
 	"my-gin/web/routers"
 	"net/http"
@@ -39,15 +45,25 @@ import (
 	"time"
 )
 
+var (
+	zkReporter reporter.Reporter
+)
+
 func main() {
 	port := flag.String("port", "6003", "port")
 	flag.Parse()
 
+	r := gin.Default()
 	if true {
 		gin.SetMode(gin.ReleaseMode)
 	}
 
-	r := gin.Default()
+	// zipkin
+	if err := initZipkin(r); err != nil {
+		panic(err)
+	}
+	defer zkReporter.Close()
+
 	routers.SetRouters(r)
 
 	srv := &http.Server{
@@ -64,6 +80,28 @@ func main() {
 	if err := gracehttp.Serve(srv); err != nil {
 		panic(fmt.Sprintf("listen error: %s\n", err))
 	}
+}
+
+func initZipkin(engine *gin.Engine) error {
+	zkReporter = zkHttp.NewReporter("http://localhost:9411/api/v2/spans")
+	endpoint, err := zipkin.NewEndpoint("test-service", "127.0.0.1:6003")
+	if err != nil {
+		return err
+	}
+
+	nativeTracer, err := zipkin.NewTracer(zkReporter, zipkin.WithLocalEndpoint(endpoint))
+	if err != nil {
+		return err
+	}
+	tracer := zkOt.Wrap(nativeTracer)
+	opentracing.SetGlobalTracer(tracer)
+
+	engine.Use(func(c *gin.Context) {
+		span := tracer.StartSpan(c.FullPath())
+		defer span.Finish()
+		c.Next()
+	})
+	return nil
 }
 
 func initLog() {
