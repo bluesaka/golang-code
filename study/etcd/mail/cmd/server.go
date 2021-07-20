@@ -34,8 +34,8 @@ func main() {
 
 	reflection.Register(s)
 
-	//endpoints := []string{"127.0.0.1:2379"}
-	endpoints := []string{"127.0.0.1:12379","127.0.0.1:22379","127.0.0.1:32379"}
+	endpoints := []string{"127.0.0.1:2379"}
+	//endpoints := []string{"127.0.0.1:12379","127.0.0.1:22379","127.0.0.1:32379"}
 	//endpoints := []string{"10.28.150.23:2379","10.80.60.87:2379","10.31.122.175:2379"}
 	rand.Seed(time.Now().UnixNano())
 	reg, err := registry.NewService(registry.ServiceInfo{
@@ -47,7 +47,17 @@ func main() {
 		panic(err)
 	}
 
+	reg2, err := registry.NewService(registry.ServiceInfo{
+		Name: "rpc.test/2",// + cast.ToString(rand.Intn(1000)),
+		IP:   "127.0.0.1:7999",
+	}, endpoints)
+
+	if err != nil {
+		panic(err)
+	}
+
 	go reg.Start()
+	go reg2.Start()
 
 	log.Println("grpc server start")
 

@@ -32,12 +32,7 @@ func NewService(serviceInfo ServiceInfo, endpoints []string) (service *Service, 
 		AutoSyncInterval:     time.Minute,
 		DialKeepAliveTime:    5 * time.Second,
 		DialKeepAliveTimeout: 5 * time.Second,
-
-		// RejectOldCluster 设置时经常会提示下面这个问题
-		// {"level":"warn","ts":"2021-04-27T16:13:21.192+0800","caller":"clientv3/retry_interceptor.go:62",
-		// "msg":"retrying of unary invoker failed","target":"passthrough:///127.0.0.1:22379","attempt":0,
-		// "error":"rpc error: code = Canceled desc = context canceled"}
-		RejectOldCluster: true,
+		RejectOldCluster:     true,
 	})
 
 	if err != nil {
