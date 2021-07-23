@@ -5,8 +5,11 @@ go 1.15
 require (
 	github.com/360EntSecGroup-Skylar/excelize/v2 v2.4.0
 	github.com/Shopify/sarama v1.29.0
-	github.com/alibaba/sentinel-golang v1.0.2 // indirect
+	github.com/alibaba/sentinel-golang v1.0.2
 	github.com/apache/rocketmq-client-go/v2 v2.1.0
+	github.com/bwmarrin/snowflake v0.3.0
+	github.com/coreos/go-semver v0.3.0 // indirect
+	github.com/coreos/go-systemd/v22 v22.3.2 // indirect
 	github.com/deepmap/oapi-codegen v1.8.1 // indirect
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/elastic/go-elasticsearch/v7 v7.13.1
@@ -24,12 +27,13 @@ require (
 	github.com/go-redis/redis v6.15.9+incompatible
 	github.com/go-redis/redis/v8 v8.0.0-alpha.2
 	github.com/go-sql-driver/mysql v1.5.0
+	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/gojektech/heimdall/v6 v6.1.0
 	github.com/golang/mock v1.6.0 // indirect
-	github.com/golang/protobuf v1.4.2
+	github.com/golang/protobuf v1.5.2
 	github.com/gomodule/redigo v2.0.0+incompatible
-	github.com/google/uuid v1.1.2 // indirect
 	github.com/grpc-ecosystem/go-grpc-middleware v1.2.0
+	github.com/grpc-ecosystem/grpc-gateway v1.16.0 // indirect
 	github.com/grpc-ecosystem/grpc-opentracing v0.0.0-20180507213350-8e809c8a8645
 	github.com/hashicorp/consul/api v1.4.0
 	github.com/hpcloud/tail v1.0.0
@@ -38,6 +42,7 @@ require (
 	github.com/influxdata/line-protocol v0.0.0-20210311194329-9aa0e372d097 // indirect
 	github.com/jinzhu/gorm v1.9.16
 	github.com/json-iterator/go v1.1.11
+	github.com/mitchellh/mapstructure v1.4.1 // indirect
 	github.com/nacos-group/nacos-sdk-go v1.0.7
 	github.com/natefinch/lumberjack v2.0.0+incompatible
 	github.com/nxadm/tail v1.4.8 // indirect
@@ -64,15 +69,15 @@ require (
 	go.etcd.io/etcd v0.0.0-20200402134248-51bdeb39e698
 	go.uber.org/atomic v1.8.0 // indirect
 	go.uber.org/ratelimit v0.2.0
-	go.uber.org/zap v1.16.0
+	go.uber.org/zap v1.17.0
 	golang.org/x/crypto v0.0.0-20210616213533-5ff15b29337e // indirect
-	golang.org/x/lint v0.0.0-20201208152925-83fdc39ff7b5 // indirect
 	golang.org/x/net v0.0.0-20210614182718-04defd469f4e
 	golang.org/x/sys v0.0.0-20210630005230-0f9fa26af87c // indirect
 	golang.org/x/time v0.0.0-20210220033141-f8bda1e9f3ba
-	google.golang.org/grpc v1.37.0
-	google.golang.org/protobuf v1.26.0-rc.1 // indirect
+	google.golang.org/genproto v0.0.0-20210602131652-f16073e35f0c // indirect
+	google.golang.org/grpc v1.38.0
 	gopkg.in/fsnotify.v1 v1.4.7
+	gopkg.in/ini.v1 v1.62.0 // indirect
 )
 
-replace google.golang.org/grpc v1.37.0 => google.golang.org/grpc v1.26.0
+replace google.golang.org/grpc v1.38.0 => google.golang.org/grpc v1.26.0

@@ -22,6 +22,7 @@ var (
 函数名为 BenchmarkXXX
 
 go test -bench=. -benchmem
+go test -bench=^BenchmarkBufferWithPool$ -benchmem
 
 BenchmarkBufferWithPool-8        9974926               121 ns/op               0 B/op          0 allocs/op
 BenchmarkBuffer-8                1004248              1222 ns/op           10240 B/op          1 allocs/op
