@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	redis2 "github.com/go-redis/redis/v8"
 	"github.com/gomodule/redigo/redis"
 	jsoniter "github.com/json-iterator/go"
@@ -16,7 +17,7 @@ func main() {
 	//redigo1()
 	//go_redis1()
 	//rank.SortBucket()
-	redigo3()
+	redigo4()
 }
 
 type RR struct {
@@ -116,4 +117,28 @@ func go_redis1() {
 	}
 
 	log.Printf("goredis stat, %+v\n", goredis.StatRedis())
+}
+
+type aa struct {
+	MapUUID  string   `json:"map_uuid"`
+	Version  string   `json:"version"`
+	Num      int      `json:"num"`
+	Accounts []string `json:"accounts"`
+}
+
+func redigo4() {
+	redisConn := redigo.GetRedis()
+	defer redigo.CloseRedis()
+
+	for i := 1; i <= 10; i++ {
+		a := aa{
+			"abc123",
+			"1.1",
+			i,
+			nil,
+		}
+		b, _ := jsoniter.Marshal(a)
+		_, err := redisConn.Do("LPUSH", "test-list", b)
+		fmt.Println(err)
+	}
 }

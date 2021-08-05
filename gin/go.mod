@@ -22,6 +22,7 @@ require (
 	github.com/natefinch/lumberjack v2.0.0+incompatible
 	github.com/openzipkin-contrib/zipkin-go-opentracing v0.4.5
 	github.com/openzipkin/zipkin-go v0.2.5
+	github.com/prometheus/client_golang v0.9.3
 	github.com/sirupsen/logrus v1.8.1
 	github.com/spf13/cast v1.3.1
 	github.com/spf13/viper v1.7.1

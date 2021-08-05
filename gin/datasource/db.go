@@ -5,10 +5,23 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
 	"github.com/spf13/viper"
+	"log"
 	"time"
 )
 
 var db *gorm.DB
+
+
+type gormLogger struct{}
+
+func (*gormLogger) Print(v ...interface{}) {
+	switch v[0] {
+	case "sql":
+		log.Println("sql", v)
+	case "log":
+		log.Println("log", v)
+	}
+}
 
 // GetDB get db
 func GetDB() *gorm.DB {
@@ -49,4 +62,7 @@ func init() {
 
 	// 最大闲置时间
 	db.DB().SetConnMaxIdleTime(viper.GetDuration("mysql.max_idle_time") * time.Second)
+
+	// log
+	db.SetLogger(&gormLogger{})
 }

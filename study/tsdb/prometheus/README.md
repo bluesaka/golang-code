@@ -168,5 +168,5 @@ scrape_configs:
 ```
 Prometheus 使用本地存储，所以集群化需要借助其他工具如InfluxDB等
 采用WAL(write-ahead logging)机制，会将数据存储到内存中并记录一份日志，2小时之后自动写入磁盘
-数据存储地址：/usr/local/etc/prometheus.args 中的 --storage.tsdb.path /usr/local/etc/prometheus.yml
+数据存储地址：/usr/local/etc/prometheus.args 中的 --storage.tsdb.path /usr/local/var/prometheus
 ```
