@@ -1,5 +1,4 @@
 /**
-todo
 @link https://www.zhihu.com/zvideo/1308438116354207744
 
 - G: 一个goroutine

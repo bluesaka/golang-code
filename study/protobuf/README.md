@@ -1,4 +1,5 @@
-/**
+#### 介绍
+```
 protoc是一款用C++编写的工具，其可以将proto文件编译为指定语言的代码，不过并不支持go语言
 protoc-gen-go 是protobuf编译插件系统中的Go版本
 
@@ -18,14 +19,33 @@ protoc --go_out=plugins=grpc:. helloworld.proto  //使用该命令，会生成gr
 
 很多坑都来自于protoc和protoc-gen-go的版本问题
 如protoc-gen-go v1.26.0版本执行上面的命令，会报以下错误：
-```
 protoc-gen-go: invalid Go import path "." for "helloworld.proto"
 The import path must contain at least one forward slash ('/') character.
 See https://developers.google.com/protocol-buffers/docs/reference/go-generated#package for more information.
-
+各种报错，建议使用合适的版本进行规避
 ```
 
-各种奇怪的报错，建议使用合适的版本进行规避
+#### 常见问题：
+```
+# 问题描述
+$ protoc --go_out=plugins=grpc:. helloworld.proto
+protoc-gen-go: unable to determine Go import path for "helloworld.proto"
 
-*/
-package main
+Please specify either:
+        • a "go_package" option in the .proto source file, or
+        • a "M" argument on the command line.
+
+
+# 查看protoc-gen-go版本
+$protoc-gen-go --version
+protoc-gen-go v1.27.1
+
+# 查看protoc版本
+$ protoc --version                               
+libprotoc 3.14.0
+
+# 升级protoc-gen-go
+go get -u github.com/golang/protobuf/protoc-gen-go@v1.3.2
+
+再次执行正常
+```
