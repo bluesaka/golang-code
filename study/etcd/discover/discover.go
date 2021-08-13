@@ -3,6 +3,7 @@ package discover
 import (
 	"context"
 	"fmt"
+	mvccpb2 "github.com/coreos/etcd/mvcc/mvccpb"
 	jsoniter "github.com/json-iterator/go"
 	"go-code/study/etcd/registry"
 	"go.etcd.io/etcd/clientv3"
@@ -59,7 +60,7 @@ func (r *Resolver) watch(prefix string) {
 	for n := range watchChan {
 		for _, ev := range n.Events {
 			switch ev.Type {
-			case mvccpb.PUT:
+			case mvccpb2.Event_EventType(mvccpb.PUT):
 				info := &registry.ServiceInfo{}
 				err := jsoniter.Unmarshal(ev.Kv.Value, info)
 				if err != nil {
@@ -67,7 +68,7 @@ func (r *Resolver) watch(prefix string) {
 				} else {
 					addrs[string(ev.Kv.Key)] = resolver.Address{Addr: info.IP}
 				}
-			case mvccpb.DELETE:
+			case mvccpb2.Event_EventType(mvccpb.DELETE):
 				delete(addrs, string(ev.PrevKv.Key))
 			}
 		}

@@ -22,30 +22,10 @@ protoc --go_out=plugins=grpc:. helloworld.proto  //使用该命令，会生成gr
 protoc-gen-go: invalid Go import path "." for "helloworld.proto"
 The import path must contain at least one forward slash ('/') character.
 See https://developers.google.com/protocol-buffers/docs/reference/go-generated#package for more information.
-各种报错，建议使用合适的版本进行规避
-```
+建议使用合适的版本进行规避
 
-#### 常见问题：
-```
-# 问题描述
-$ protoc --go_out=plugins=grpc:. helloworld.proto
-protoc-gen-go: unable to determine Go import path for "helloworld.proto"
-
-Please specify either:
-        • a "go_package" option in the .proto source file, or
-        • a "M" argument on the command line.
-
-
-# 查看protoc-gen-go版本
-$protoc-gen-go --version
-protoc-gen-go v1.27.1
-
-# 查看protoc版本
-$ protoc --version                               
-libprotoc 3.14.0
-
-# 升级protoc-gen-go
+protoc-gen-go使用v1.3.2版本
 go get -u github.com/golang/protobuf/protoc-gen-go@v1.3.2
 
-再次执行正常
+其他使用方式参见grpc_gateway目录
 ```

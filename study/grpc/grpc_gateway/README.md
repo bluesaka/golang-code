@@ -4,6 +4,7 @@
 ```
 go install \
     github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway \
+    github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2 \
     github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger \
     github.com/golang/protobuf/protoc-gen-go
 ```
@@ -46,6 +47,31 @@ curl -d '{"name":"hello"}' http://localhost:8081/v1/echo
 # import "google/api/annotations.proto" 标红
 不影响编译和运行，Goland可以在Preferences --> Languages & Framewokrs --> Protocol Buffers 添加相关thrid_party目录，如：
 .../pkg/mod/github.com/grpc-ecosystem/grpc-gateway@v1.16.0/third_party/googleapis
+```
+
+#### Kratos参考
+```
+cd proto
+
+protoc --proto_path=. \
+       --proto_path=./third_party \
+       --go_out=paths=source_relative:. \
+       --go-http_out=paths=source_relative:. \
+       --go-grpc_out=paths=source_relative:. \
+       --validate_out=paths=source_relative,lang=go:. \
+       --openapiv2_out . \
+        kratos_proto/hello_grpc_gateway.proto
+
+生成的源码文件为：
+xxx.pb.go
+xxx.pb.validate.go
+xxx.pb.swagger.json
+xxx_grpc.pb.go
+xxx_http.pb.go
+
+# 问题
+grpc.SupportPackageIsVersion7 undefined
+之前为了兼容etcd v3.3，grpc的版本较低，可升级到etcd3.5和grpc版本
 ```
 
 #### Swagger
