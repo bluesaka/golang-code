@@ -36,7 +36,7 @@ func Producer() {
 	msg := &sarama.ProducerMessage{
 		Topic:     topic,
 		Key:       sarama.StringEncoder("go_test_key"),
-		Partition: 1, //搭配sarama.NewManualPartitioner手动指定分区，前提是该topic有该分区，不会会报错`kafka: partitioner returned an invalid partition index`
+		Partition: 1, //搭配sarama.NewManualPartitioner手动指定分区，前提是该topic有该分区，不然会报错`kafka: partitioner returned an invalid partition index`
 		Timestamp: time.Now(),
 	}
 

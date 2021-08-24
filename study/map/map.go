@@ -10,22 +10,19 @@ https://github.com/golang/go/issues/20135
  */
 func MapGCIssue() {
 	v := struct{}{}
-
 	a := make(map[int]struct{})
 
 	for i := 0; i < 10000; i++ {
 		a[i] = v
 	}
-
 	fmt.Println("len:", len(a))
 	runtime.GC()
 	fmt.Println("len:", len(a))
 	printMemStats("After Map Add 10000")
 
-	for i := 0; i < 10000-1; i++ {
+	for i := 0; i < 9999; i++ {
 		delete(a, i)
 	}
-
 	fmt.Println("len:", len(a))
 	runtime.GC()
 	fmt.Println("len:", len(a))
@@ -34,7 +31,6 @@ func MapGCIssue() {
 	for i := 0; i < 10000-1; i++ {
 		a[i] = v
 	}
-
 	fmt.Println("len:", len(a))
 	runtime.GC()
 	fmt.Println("len:", len(a))
