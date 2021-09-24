@@ -1,0 +1,18 @@
+app:
+  name: my-gin
+  host: "http://localhost:6001"
+  env: test
+  addr: ":6001"
+  debug: true
+
+log:
+  path: "/data/logs/gin.log"
+#  path: "./gin.log"
+
+mysql:
+  dsn: "root:123456@(127.0.0.1:3306)/test?charset=utf8mb4&parseTime=true&loc=Local&readTimeout=10s&writeTimeout=10s"
+  max_active_conn: 10
+  max_idle_conn: 5
+  max_life_time: 3600
+  max_idle_time: 1800
+  debug: true

@@ -14,7 +14,7 @@ import (
 
 const schema = "etcd"
 
-// resolver is the implementation of grpc.resolve.Builder
+// Resolver is the implementation of grpc.resolve.Builder
 // Resolver 实现grpc的grpc.resolve.Builder接口的Build与Scheme方法
 type Resolver struct {
 	endpoints []string

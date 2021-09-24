@@ -2,8 +2,8 @@ package etcd
 
 import (
 	"context"
-	"go.etcd.io/etcd/clientv3"
-	"go.etcd.io/etcd/clientv3/concurrency"
+	"github.com/coreos/etcd/clientv3"
+	"github.com/coreos/etcd/clientv3/concurrency"
 	"log"
 	"time"
 )
@@ -131,7 +131,7 @@ func KeepAlive() {
 	}
 	for {
 		ka := <-ch
-		log.Println("ttl:", ka.TTL)
+		log.Printf("LeaseKeepAliveResponse: %v, leaseID: %d, ttl: %d", ka, ka.ID, ka.TTL)
 	}
 }
 

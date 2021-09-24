@@ -20,6 +20,7 @@ require (
 	github.com/jpillora/overseer v1.1.6
 	github.com/json-iterator/go v1.1.9
 	github.com/natefinch/lumberjack v2.0.0+incompatible
+	github.com/opentracing/opentracing-go v1.1.0
 	github.com/openzipkin-contrib/zipkin-go-opentracing v0.4.5
 	github.com/openzipkin/zipkin-go v0.2.5
 	github.com/prometheus/client_golang v0.9.3
