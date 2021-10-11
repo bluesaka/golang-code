@@ -42,7 +42,6 @@ func NewService(serviceInfo ServiceInfo, endpoints []string) (service *Service, 
 
 	if err != nil {
 		log.Fatal(err)
-		return
 	}
 
 	// 使用Status来检测endpoint
